@@ -1,0 +1,10 @@
+.env
+.DS_Store
+node_modules/
+.venv/
+__pycache__/
+dist/
+*.tsbuildinfo
+.vercel
+.vercel-link
+service_account*.json

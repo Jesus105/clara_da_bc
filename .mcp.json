@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "postgres-tasknest": {
+      "type": "stdio",
+      "command": "bash",
+      "args": ["scripts/mcp_postgres.sh"],
+      "env": {}
+    }
+  }
+}

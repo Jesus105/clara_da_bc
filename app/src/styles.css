@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+/* Tokens por rol (paleta de referencia validada con validate_palette.js, light + dark). */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface-1: #fcfcfb;
+  --surface-2: #f3f2ef;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  --good: #006300;
+  --critical: #d03b3b;
+  --warning-bg: #fff4dc;
+  --warning-ink: #6b4a00;
+  --ref-line: #b5b3ab;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface-1: #1a1a19;
+    --surface-2: #232321;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #3987e5;
+    --good: #0ca30c;
+    --critical: #e66767;
+    --warning-bg: #3a2e12;
+    --warning-ink: #f3d48a;
+    --ref-line: #5c5b56;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+  }
+}
+
+html,
+body {
+  background: var(--page);
+  color: var(--text-primary);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.chip:hover {
+  background: var(--surface-2);
+}
+.chip[aria-pressed="true"],
+.chip[data-active="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 2px;
+  border-radius: 9px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.seg button {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 1px var(--border);
+  font-weight: 600;
+}
+
+.tab {
+  height: 40px;
+  padding: 0 4px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+}
+.tab[aria-selected="true"] {
+  color: var(--text-primary);
+  font-weight: 600;
+  border-color: var(--accent);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  text-align: right;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--grid);
+  vertical-align: bottom;
+  min-width: 64px;
+  line-height: 1.25;
+}
+.data-table td {
+  text-align: right;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--grid);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.data-table th:first-child,
+.data-table td:first-child {
+  text-align: left;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- Deck */
+/* El deck siempre se ve en tema claro (consistente con el PDF). */
+.deck {
+  color-scheme: light;
+  --page: #e9e8e4;
+  --surface-1: #fcfcfb;
+  --surface-2: #f3f2ef;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  background: var(--page);
+  color: var(--text-primary);
+}
+.deck-slide {
+  position: relative;
+  overflow: hidden;
+  background: #fcfcfb;
+  color: #0b0b0b;
+  font-family: var(--font);
+}
+.deck-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  color: #52514e;
+}
+.deck-table th {
+  text-align: left;
+  font-weight: 600;
+  color: #898781;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #c3c2b7;
+}
+.deck-table td {
+  padding: 7px 8px;
+  border-bottom: 1px solid #e1e0d9;
+  font-variant-numeric: tabular-nums;
+  vertical-align: top;
+}
+.deck-table-lg {
+  font-size: 15px;
+}
+.deck-table-lg td {
+  padding: 10px 10px;
+}
+.deck-table-lg th {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.deck code {
+  font-size: 0.9em;
+  background: #f3f2ef;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+.deck-print .deck-page {
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  break-after: page;
+  page-break-after: always;
+}
+@media print {
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+  html,
+  body {
+    background: #fcfcfb;
+  }
+}

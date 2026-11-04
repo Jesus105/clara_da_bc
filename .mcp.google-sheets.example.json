@@ -1,0 +1,11 @@
+{
+  "_comment": "OPCIONAL. Agrega este bloque a tu .mcp.json solo si vas a reconstruir el Google Sheet (tools/gsheets). Requiere una service account propia; la llave NUNCA va al repo.",
+  "mcpServers": {
+    "google-sheets": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["--from", "mcp-google-sheets==0.6.3", "--with", "mcp<2", "mcp-google-sheets"],
+      "env": { "SERVICE_ACCOUNT_PATH": "/ruta/a/tu/service_account.json" }
+    }
+  }
+}
